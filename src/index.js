@@ -27,3 +27,7 @@ console.log(h)
 import * as math from './math.js'
 
 console.log(math.add(10, 11))
+
+import test from './math.js'
+
+console.log(test(3))

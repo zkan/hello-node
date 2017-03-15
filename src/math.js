@@ -17,3 +17,5 @@ export let volume = 3500
 //   PI,
 //   volume
 // }
+
+export default (r) => (PI * r * r)
