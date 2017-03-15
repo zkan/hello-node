@@ -7,7 +7,8 @@ export const area = (r) => {
   return PI * r * r
 }
 
-let volume = 3500
+export let PI = 3.14
+export let volume = 3500
 
 // Alternatively, we can do:
 // const let PI = 3.14
