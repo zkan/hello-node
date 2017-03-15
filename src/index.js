@@ -20,6 +20,10 @@ const {width, height} = props
 console.log(width)
 console.log(height)
 
+const {width: w, height: h} = props
+console.log(w)
+console.log(h)
+
 import * as math from './math.js'
 
 console.log(math.add(10, 11))
