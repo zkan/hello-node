@@ -2,4 +2,11 @@ console.log('utils.js')
 
 const someName = "Another Kan"
 
-module.exports = someName
+const add = (a, b) => {
+    return a + b
+}
+
+module.exports = {
+    someName,
+    add
+}
