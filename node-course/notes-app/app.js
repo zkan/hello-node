@@ -1,4 +1,5 @@
 const fs = require('fs')
+const chalk = require('chalk')
 const validator = require('validator')
 const { someName, add } = require('./utils')
 const getNotes = require('./notes')
@@ -19,3 +20,6 @@ console.log(notes)
 
 console.log(validator.isEmail('zkan@hey.com'))
 console.log(validator.isEmail('zkan@hey'))
+
+console.log(chalk.green('Success!'))
+console.log(chalk.blue('Hello') + ' World' + chalk.red('!'))
