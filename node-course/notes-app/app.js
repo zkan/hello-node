@@ -3,7 +3,7 @@ const chalk = require('chalk')
 const validator = require('validator')
 const yargs = require('yargs')
 const { someName, add } = require('./utils')
-const { getNotes, addNote, removeNote, listNotes } = require('./notes')
+const { getNotes, addNote, removeNote, listNotes, readNote } = require('./notes')
 
 fs.writeFileSync('notes.txt', 'This file was created by Node.js!\n')
 fs.appendFileSync('notes.txt', 'My name is Kan.')
@@ -98,8 +98,16 @@ yargs.command({
 yargs.command({
     command: 'read',
     describe: 'Read a note',
-    handler: () => {
+    builder: {
+        title: {
+            describe: 'Note title',
+            demandOption: true,
+            type: 'string'
+        }
+    },
+    handler: (argv) => {
         console.log('Reading a note')
+        readNote(argv.title)
     }
 })
 
