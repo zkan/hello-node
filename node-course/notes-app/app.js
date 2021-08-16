@@ -22,4 +22,5 @@ console.log(validator.isEmail('zkan@hey.com'))
 console.log(validator.isEmail('zkan@hey'))
 
 console.log(chalk.green('Success!'))
+console.log(chalk.red.inverse('Failed!'))
 console.log(chalk.blue('Hello') + ' World' + chalk.red('!'))
