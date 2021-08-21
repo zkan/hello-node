@@ -27,3 +27,12 @@ request({ url, json: true }, (error, response) => {
   const feelslike = response.body.current.feelslike
   console.log(weather_descriptions[0] + '. It is currently ' + temperature + ' degress out. It feels like ' + feelslike + ' degress out.')
 })
+
+const geocodeUrl = 'https://api.mapbox.com/geocoding/v5/mapbox.places/Los%20Angeles.json?access_token=pk.eyJ1IjoiemthbiIsImEiOiJja3NsYWh0dzAwZ2o2Mm9zb21sZjhkdHhrIn0.j-e0byTFMGhTduZpwB4LHg'
+
+request({ url: geocodeUrl, json: true }, (error, response) => {
+  console.log(response.body)
+  const longitude = response.body.features[0].center[0]
+  const latitude = response.body.features[0].center[1]
+  console.log(longitude, latitude)
+})
