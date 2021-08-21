@@ -21,4 +21,9 @@ request({ url, json: true }, (error, response) => {
   //console.log(data.current)
 
   console.log(response.body.current)
+
+  const weather_descriptions = response.body.current.weather_descriptions
+  const temperature = response.body.current.temperature
+  const feelslike = response.body.current.feelslike
+  console.log(weather_descriptions[0] + '. It is currently ' + temperature + ' degress out. It feels like ' + feelslike + ' degress out.')
 })
