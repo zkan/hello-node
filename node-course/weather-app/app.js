@@ -59,3 +59,21 @@ forecast(37.8267, -122.4233, (error, data) => {
   console.log('Forecast Error:', error)
   console.log('Forecast Data:', data)
 })
+
+console.log('Callback Chaining')
+geocode('Boston', (error, data) => {
+  if (error) {
+    return console.log(error)
+  } else {
+    console.log('Geocode Error:', error)
+    console.log('Geocode Data:', data)
+    forecast(data.latitude, data.longitude, (error, forecastData) => {
+      if (error) {
+        return console.log(error)
+      }
+      console.log('Geocode Data:', data.location)
+      console.log('Forecast Error:', error)
+      console.log('Forecast Data:', forecastData)
+    })
+  }
+})
