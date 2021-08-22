@@ -1,5 +1,6 @@
 const request = require('postman-request')
 const geocode = require('./utils/geocode')
+const forecast = require('./utils/forecast')
 
 console.log('Starting')
 
@@ -52,4 +53,9 @@ request({ url: geocodeUrl, json: true }, (error, response) => {
 geocode('Philadelphia', (error, data) => {
   console.log('Geocode Error:', error)
   console.log('Geocode Data:', data)
+})
+
+forecast(37.8267, -122.4233, (error, data) => {
+  console.log('Forecast Error:', error)
+  console.log('Forecast Data:', data)
 })
