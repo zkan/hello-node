@@ -60,8 +60,13 @@ forecast(37.8267, -122.4233, (error, data) => {
   console.log('Forecast Data:', data)
 })
 
+const address = process.argv[2]
+if (!address) {
+  console.log('Please provide an address')
+}
+
 console.log('Callback Chaining')
-geocode('Boston', (error, data) => {
+geocode(address, (error, data) => {
   if (error) {
     return console.log(error)
   } else {
