@@ -1,5 +1,9 @@
 import express from 'express'
+import { Memorize, noShuffle } from './memorize.js'
+// import { app } from './app'
 // const express = require('express')
+
+import { getThemeById } from './db.js'
 
 export const app = express()
 
@@ -37,6 +41,26 @@ app.use(nextMiddleware)
 app.get('/', (req, res, next) => {
     next(new Error('error from'))
     res.json({ message: 'Hello World'})
+})
+
+app.post('/games/theme/:id', async (req, res) => {
+    try {
+        // const theme = await prisma.theme.findUnique({
+        //     where: {
+        //         id: req.params.id
+        //     }
+        // })
+
+        // ทำ layer กั้น Prisma
+        const theme = await getThemeById(req.params.id)
+        console.log(theme)
+
+        const game = new Memorize(theme.emojis, noShuffle)
+        res.json({ cards: game.cards })
+    } catch (err) {
+        res.status(500).json({ error: err.message })
+
+    }
 })
 
 app.use(errorHandling)
