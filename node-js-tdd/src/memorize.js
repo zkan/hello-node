@@ -3,9 +3,20 @@
 // - isFaceUp: boolean
 // - isMatched: boolean
 
+export const knuthShuffle = array => {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        const temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+}
+
+export const noShuffle = array => array
+
 export class Memorize {
     cards = []
-    constructor(emojis) {
+    constructor(emojis, shuffleFunc) {
         if (!emojis) {
             throw new Error('empty string')
         }
@@ -18,6 +29,8 @@ export class Memorize {
             this.cards.push({ emoji, isFaceUp: false })
             this.cards.push({ emoji, isFaceUp: false })
         }
+
+        shuffleFunc(this.cards)
     }
 
     choose(index) {
