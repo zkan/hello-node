@@ -22,7 +22,7 @@ describe('int', () => {
 
     it('inti with "😆😆" should throw error "duplicate emoji"', () => {
         const game = 
-        expect(() => { new Memorize('😆😆') }).toThrowError('duplicate emoji')
+        expect(() => { new Memorize('😆😆') }).toThrowError('duplicate emojis')
     })
 
     it('inti with "😆🥶" should init with four cards', () => {
