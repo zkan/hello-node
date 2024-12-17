@@ -1,5 +1,5 @@
 import { test, expect } from 'vitest';
-import { sum } from '../src/kan';
+import { sum } from '../src/kan.js';
 
 test('test', () => {
   expect(sum(1, 2)).toBe(3);

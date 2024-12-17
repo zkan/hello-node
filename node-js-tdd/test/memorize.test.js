@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { Memorize, noShuffle } from '../src/memorize';
+import { Memorize, noShuffle } from '../src/memorize.js';
 
 // init
 // '' -> throw error 'empty string

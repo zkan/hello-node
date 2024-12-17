@@ -8,7 +8,7 @@
 // - given 30 should return 'FizzBuzz'
 
 import { test, expect } from 'vitest';
-import { fizzbuzz } from '../src/fizzbuzz';
+import { fizzbuzz } from '../src/fizzbuzz.js';
 
 // fizzbuzz
 // number => string

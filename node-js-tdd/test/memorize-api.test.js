@@ -1,7 +1,6 @@
 import { afterEach, describe, it, expect, vi } from 'vitest';
 import supertest from 'supertest';
 import { app } from '../src/app.js';
-
 import * as db from '../src/db.js';
 
 describe('memorize-api', () => {
