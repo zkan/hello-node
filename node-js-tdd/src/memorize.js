@@ -16,6 +16,9 @@ export const noShuffle = array => array
 
 export class Memorize {
     cards = []
+
+    // Use dependency injection here so that we don't need to mock it
+    // Think about the design first before use mock
     constructor(emojis, shuffleFunc) {
         if (!emojis) {
             throw new Error('empty string')
