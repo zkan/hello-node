@@ -24,4 +24,9 @@ describe('int', () => {
         const game = 
         expect(() => { new Memorize('😆😆') }).toThrowError('duplicate emoji')
     })
+
+    it('inti with "😆🥶" should init with four cards', () => {
+        const game = new Memorize('😆🥶')
+        expect(game.cards.length).toEqual(4)
+    })
 })
