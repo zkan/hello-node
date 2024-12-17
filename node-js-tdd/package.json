@@ -4,6 +4,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "start": "node ./src/server.js",
     "test": "vitest"
   },
   "keywords": [],
