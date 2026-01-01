@@ -3,3 +3,9 @@ node = "24.12.0"
 
 [tasks.db]
 run = "./node_modules/.bin/prisma dev"
+
+[tasks.migrate]
+run = "./node_modules/.bin/prisma migrate dev"
+
+[tasks.psql]
+run = "psql \"host=localhost user=postgres port=51214 sslmode=disable\""

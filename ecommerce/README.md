@@ -2,12 +2,22 @@
 
 ## Running and Accessing the Database (PostgreSQL)
 
-```bash
-./node_modules/.bin/prisma dev
-```
+Run the database:
 
 ```bash
-psql "host=localhost user=postgres port=51214 sslmode=disable"
+mise r db
+```
+
+Access the database:
+
+```bash
+mise r psql
+```
+
+## Creating and Applying a Migration
+
+```bash
+./node_modules/.bin/prisma migrate dev --name CreateUsersTable
 ```
 
 **Credit:** [Project in Prisma and NodeJS using
