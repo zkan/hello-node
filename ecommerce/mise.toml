@@ -9,3 +9,6 @@ run = "./node_modules/.bin/prisma migrate dev"
 
 [tasks.psql]
 run = "psql \"host=localhost user=postgres port=51214 sslmode=disable\""
+
+[env]
+PORT = "3000"
