@@ -1,2 +1,8 @@
 [tools]
 node = "24.12.0"
+
+[tasks.up]
+run = "docker compose up -d"
+
+[tasks.down]
+run = "docker compose down"
