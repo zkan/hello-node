@@ -1,0 +1,24 @@
+meta {
+  name: Signup
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:3000/api/auth/signup
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "name": "Kan O.",
+    "email": "kan+test@odds.team",
+    "password": "abc123"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

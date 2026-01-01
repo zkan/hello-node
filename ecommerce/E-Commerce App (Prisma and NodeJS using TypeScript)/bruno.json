@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "E-Commerce App (Prisma and NodeJS using TypeScript)",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}
