@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgres:18.1
+    container_name: postgres
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_DB: ecommerce
+      POSTGRES_USER: mydb
+      POSTGRES_PASSWORD: p@ssw0rd
+    volumes:
+      - postgresql_data:/var/lib/postgresql
+
+volumes:
+  postgresql_data:
+    driver: local

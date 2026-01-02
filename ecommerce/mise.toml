@@ -1,17 +1,17 @@
 [tools]
 node = "24.12.0"
 
+[tasks.up]
+run = "docker compose up -d"
+
+[tasks.down]
+run = "docker compose down"
+
 [tasks.dev]
 run = "npm run dev"
 
-[tasks.db]
-run = "./node_modules/.bin/prisma dev"
-
 [tasks.migrate]
 run = "./node_modules/.bin/prisma migrate dev"
-
-[tasks.psql]
-run = "psql \"host=localhost user=postgres port=51214 sslmode=disable\""
 
 [env]
 PORT = "3000"
