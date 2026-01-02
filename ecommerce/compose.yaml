@@ -1,15 +1,17 @@
 services:
   db:
-    image: postgres:18.1
-    container_name: postgres
+    image: postgres:14.20
     ports:
       - 5432:5432
     environment:
-      POSTGRES_DB: ecommerce
-      POSTGRES_USER: mydb
-      POSTGRES_PASSWORD: p@ssw0rd
+      POSTGRES_PASSWORD: example
     volumes:
-      - postgresql_data:/var/lib/postgresql
+      - postgresql_data:/var/lib/postgresql/data
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
 
 volumes:
   postgresql_data:
