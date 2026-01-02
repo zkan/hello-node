@@ -1,12 +1,14 @@
 services:
   db:
-    image: postgres:14.20
+    image: postgres:18.1
     ports:
       - 5432:5432
     environment:
-      POSTGRES_PASSWORD: example
+      POSTGRES_DB: ecommerce
+      POSTGRES_USER: hello
+      POSTGRES_PASSWORD: world
     volumes:
-      - postgresql_data:/var/lib/postgresql/data
+      - postgresql_data:/var/lib/postgresql
   adminer:
     image: adminer
     restart: always
