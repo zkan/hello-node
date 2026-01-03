@@ -1,15 +1,28 @@
 import { Request, Response } from "express"
-import { hashSync } from "bcrypt"
+import { hashSync, compareSync } from "bcrypt"
+import jwt from "jsonwebtoken"
 import { prisma } from "../lib/prisma"
+import { JWT_SECRET } from "../secrets"
 
-export const login = (req: Request, res: Response) => {
-  res.send("Login")
+export const login = async (req: Request, res: Response) => {
+  const { email, password } = req.body
+
+  let user = await prisma.user.findFirst({ where: { email } })
+  if (!user) {
+    throw Error("User does not exist!")
+  }
+  if (!compareSync(password, user.password)) {
+    throw Error("Incorrect password!")
+  }
+  const token = jwt.sign({
+    userId: user.Id
+  }, JWT_SECRET)
+
+  res.json({ user, token })
 }
 
 export const signup = async (req: Request, res: Response) => {
   const { email, password, name } = req.body
-
-  console.log(name, email, password)
 
   let user = await prisma.user.findFirst({ where: { email } })
   if (user) {
@@ -23,6 +36,4 @@ export const signup = async (req: Request, res: Response) => {
     }
   })
   res.json(user)
-
-  await prisma.$disconnect()
 }
