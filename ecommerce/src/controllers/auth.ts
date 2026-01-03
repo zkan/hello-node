@@ -15,7 +15,7 @@ export const login = async (req: Request, res: Response) => {
     throw Error("Incorrect password!")
   }
   const token = jwt.sign({
-    userId: user.Id
+    userId: user.id
   }, JWT_SECRET)
 
   res.json({ user, token })
