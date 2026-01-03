@@ -10,6 +10,9 @@ run = "docker compose down"
 [tasks.dev]
 run = "npm run dev"
 
+[tasks.test]
+run = "npm run test"
+
 [tasks.migrate]
 run = "./node_modules/.bin/prisma migrate dev"
 
