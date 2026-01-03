@@ -1,5 +1,8 @@
 import { Request, Response } from "express"
+import { sign } from "jsonwebtoken"
 import { login, signup } from "../../controllers/auth"
+import { prisma } from "../../lib/prisma"
+import type { UserModel as User } from "../../generated/prisma/models/User"
 
 // Mock dependencies
 jest.mock("../../lib/prisma", () => ({
@@ -24,16 +27,13 @@ jest.mock("../../secrets", () => ({
   JWT_SECRET: "test_jwt_secret"
 }))
 
-import { prisma } from "../../lib/prisma"
-import { sign } from "jsonwebtoken"
-
 // Type assertions for mocks
 const mockPrismaUser = prisma.user as jest.Mocked<typeof prisma.user>
 const mockSign = sign as jest.Mock
 
 describe("Auth Controller", () => {
-  let mockReq: Partial<Request>
-  let mockRes: Partial<Response>
+  let mockReq: Partial<Request & { body: { email: string; password: string; name?: string } }>
+  let mockRes: Partial<Response & { json: jest.Mock; status: jest.Mock }>
   let mockJson: jest.Mock
   let mockStatus: jest.Mock
 
@@ -51,7 +51,7 @@ describe("Auth Controller", () => {
   describe("signup", () => {
     it("should create a new user successfully", async () => {
       const userData = { email: "test@example.com", password: "password123", name: "Test User" }
-      const createdUser = { 
+      const createdUser: User = { 
         id: 1, 
         ...userData, 
         password: "hashed_password123",
@@ -78,7 +78,7 @@ describe("Auth Controller", () => {
 
     it("should throw error if user already exists", async () => {
       const userData = { email: "existing@example.com", password: "password123", name: "Existing User" }
-      const existingUser = { 
+      const existingUser: User = { 
         id: 1, 
         ...userData, 
         password: "hashed_password123",
@@ -97,7 +97,7 @@ describe("Auth Controller", () => {
   describe("login", () => {
     it("should login user successfully and return token", async () => {
       const userData = { email: "test@example.com", password: "correct123" }
-      const existingUser = { 
+      const existingUser: User = { 
         id: 1, 
         email: userData.email, 
         password: "hashed_password", 
@@ -105,7 +105,7 @@ describe("Auth Controller", () => {
         createdAt: new Date(),
         updatedAt: new Date()
       }
-      const token = "mock_jwt_token"
+      const token: string = "mock_jwt_token"
 
       mockReq.body = userData
       mockPrismaUser.findFirst.mockResolvedValue(existingUser)
@@ -129,7 +129,7 @@ describe("Auth Controller", () => {
 
     it("should throw error if password is incorrect", async () => {
       const userData = { email: "test@example.com", password: "wrongpassword" }
-      const existingUser = { 
+      const existingUser: User = { 
         id: 1, 
         email: userData.email, 
         password: "hashed_password", 
